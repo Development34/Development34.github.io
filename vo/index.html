@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 400px;
+      padding: 40px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .login-header h1 {
+      color: #333;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .login-header p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #4a90e2;
+    }
+
+    .form-group .error-message {
+      color: #e74c3c;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+    }
+
+    .remember-me input {
+      margin-right: 5px;
+    }
+
+    .forgot-password {
+      color: #4a90e2;
+      text-decoration: none;
+    }
+
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
+
+    .login-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-button:hover {
+      background-color: #3a7bc8;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .register-link a {
+      color: #4a90e2;
+      text-decoration: none;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <h1>Welcome Back</h1>
+      <p>Please enter your credentials to login</p>
+    </div>
+    
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <div class="error-message" id="emailError">Please enter a valid email address</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <div class="error-message" id="passwordError">Password must be at least 6 characters</div>
+      </div>
+      
+      <div class="remember-forgot">
+        <div class="remember-me">
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember me</label>
+        </div>
+        <a href="#" class="forgot-password">Forgot Password?</a>
+      </div>
+      
+      <button type="submit" class="login-button">Login</button>
+      
+      <div class="register-link">
+        Don't have an account? <a href="#">Register</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginForm = document.getElementById('loginForm');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const emailError = document.getElementById('emailError');
+      const passwordError = document.getElementById('passwordError');
+      
+      // Email validation function
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+      
+      // Form validation
+      loginForm.addEventListener('submit', function(event) {
+        let isValid = true;
+        
+        // Validate email
+        if (!isValidEmail(emailInput.value)) {
+          emailError.style.display = 'block';
+          emailInput.style.borderColor = '#e74c3c';
+          isValid = false;
+        } else {
+          emailError.style.display = 'none';
+          emailInput.style.borderColor = '#ddd';
+        }
+        
+        // Validate password
+        if (passwordInput.value.length < 6) {
+          passwordError.style.display = 'block';
+          passwordInput.style.borderColor = '#e74c3c';
+          isValid = false;
+        } else {
+          passwordError.style.display = 'none';
+          passwordInput.style.borderColor = '#ddd';
+        }
+        
+        // If form is not valid, prevent submission
+        if (!isValid) {
+          event.preventDefault();
+        } else {
+          event.preventDefault(); // Prevent actual form submission for this demo
+          
+          // Simulate login process
+          const loginButton = document.querySelector('.login-button');
+          loginButton.textContent = 'Logging in...';
+          loginButton.disabled = true;
+          
+          // Simulate API call with timeout
+          setTimeout(function() {
+            alert('Login successful! (This is just a demo)');
+            loginButton.textContent = 'Login';
+            loginButton.disabled = false;
+          }, 1500);
+        }
+      });
+      
+      // Real-time validation for better UX
+      emailInput.addEventListener('input', function() {
+        if (emailInput.value && !isValidEmail(emailInput.value)) {
+          emailError.style.display = 'block';
+          emailInput.style.borderColor = '#e74c3c';
+        } else {
+          emailError.style.display = 'none';
+          emailInput.style.borderColor = '#ddd';
+        }
+      });
+      
+      passwordInput.addEventListener('input', function() {
+        if (passwordInput.value && passwordInput.value.length < 6) {
+          passwordError.style.display = 'block';
+          passwordInput.style.borderColor = '#e74c3c';
+        } else {
+          passwordError.style.display = 'none';
+          passwordInput.style.borderColor = '#ddd';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
