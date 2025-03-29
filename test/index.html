@@ -3,42 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ㅋㅋㅋ 속았네?</title>
+    <title>속았지? 😆</title>
     <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+        
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #fafafa;
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            text-align: center;
+            background: #fff;
             padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 400px;
         }
+        
         h1 {
-            color: red;
-            font-size: 3em;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #ff4757;
+            margin-bottom: 10px;
         }
+        
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #495057;
+        }
+        
         img {
-            width: 300px;
+            width: 100%;
+            max-width: 320px;
             height: auto;
             margin-top: 20px;
-        }
-        .btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            background-color: blue;
-            color: white;
-            text-decoration: none;
             border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 1.2em;
+            background: #ffdd00;
+            color: #222;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: #e6c200;
+            transform: translateY(-3px);
+        }
+        
+        .btn.green {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn.green:hover {
+            background: #218838;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px;
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            p {
+                font-size: 1em;
+            }
+            
+            .btn {
+                font-size: 1em;
+                padding: 12px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>당신은 속으셨습니다!!</h1>
-    <p>속여서 죄송함다.. 이방 와주때여 ..헤헤</p>
-    <img src="https://media.giphy.com/media/3o7TKU8RvQuomFfUUU/giphy.gif" alt="놀리는 GIF">
-    <br>
-    <a class="btn" href="https://open.kakao.com/o/gTldkxkh" onclick="alert('속았으면 입장');">개발자 방 가기</a>
+    <div class="container">
+        <h1>😂 속았네!</h1>
+        <p>이런! 속으셨군요. 그래도 재밌죠? 😆</p>
+        <img src="https://media.giphy.com/media/3o7TKU8RvQuomFfUUU/giphy.gif" alt="놀리는 GIF">
+        <a class="btn" href="https://open.kakao.com/o/gTldkxkh" onclick="alert('속았으면 입장! 🤣');">개발자 방 가기</a>
+        <a class="btn green" href="https://open.kakao.com/me/voidtest12a" onclick="alert('이런거 만들러 가기! 😆');">이런거 만들러 가기</a>
+    </div>
     <audio autoplay loop>
         <source src="https://www.myinstants.com/media/sounds/trollolol.mp3" type="audio/mpeg">
     </audio>
